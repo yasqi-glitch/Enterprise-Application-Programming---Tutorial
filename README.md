@@ -3,7 +3,37 @@
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
 
-### Github
+### Tutorial 2
+Pertanyaan 1: Cobalah untuk menambahkan sebuah Kebun dengan mengakses link
+berikut setelah menjalankan program:
+http://localhost:8080/kebun-safari/add?id=1&nama=Papa%20APAP&alamat=Maung%
+20Fasilkom&noTelepon=081xxx Apa yang terjadi? Jelaskan mengapa hal tersebut
+dapat terjadi
+Jawab : Pada saat membukanya website error dan menunjukan error "whitelabel". Hal ini disebabkan belum adanya template "add-kebun-safari.html" yang berakibat hasil return controller menjadi error.
+
+Pertanyaan 2: Menurut kamu anotasi @Autowired pada class Controller tersebut
+merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja
+@Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+Jawab : Menurut saya @Autowired merupakan salah satu konsep Dependency Injection. Cara kerjanya adalah isi dari Class Service menginjeksi Class Controller.
+
+Pertanyaan 3: Cobalah untuk menambahkan sebuah Kebun dengan mengakses link
+berikut:
+http://localhost:8080/kebun-safari/add?id=1&nama=Papa%20APAP&alamat=Maung%
+20Fasilkom Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi.
+Jawab : Terjadi whitelabel error karena tdk ada nomor telepon sebagai parameter dari hasil required = true.
+
+Pertanyaan 4: Jika Papa APAP ingin melihat Kebun Safari dengan nama Papa APAP,
+link apa yang harus diakses?
+Jawab : http://localhost:8080/kebun-safari/view/1
+
+Pertanyaan 5: Tambahkan 1 contoh Kebun Safari lainnya sesukamu. Lalu cobalah
+untuk mengakses http://localhost:8080/ , apa yang akan ditampilkan? Sertakan juga
+bukti screenshotmu.
+Jawab : Tampilan keseluruhan = (https://ibb.co/NrzvtJ4)
+Add = (https://yasmin22.imgbb.com/)
+
+
+### Tutorial 1
 1. Apa itu Issue Tracker? Apa saja masalah yang dapat diselesaikan dengan Issue Tracker?
 (Tuliskan jawabanmu)
 Singkatnya issue tracker merupakan alat untuk melacak bug dari produk selama proses pengembangan produk.
