@@ -29,20 +29,25 @@ public class PegawaiController {
     public String addPegawaiForm(@PathVariable Long noCabang, Model model){
         PegawaiModel pegawai = new PegawaiModel();
         CabangModel cabang = cabangService.getCabangByNoCabang(noCabang);
-        pegawai.setCabang(cabang);
-        model.addAttribute("noCabang", noCabang);
-        model.addAttribute("pegawai", pegawai);
-        return "form-add-pegawai";
+        if (cabang.getListPegawai().size() < 3){
+            pegawai.setCabang(cabang);
+            model.addAttribute("noCabang", noCabang);
+            model.addAttribute("pegawai", pegawai);
+            return "form-add-pegawai";
+        }
+        return "error-page";
     }
 
     @PostMapping("/pegawai/add")
     public String addPegawaiSubmit(
             @ModelAttribute PegawaiModel pegawai, Model model
     ){
+
         pegawaiService.addPegawai(pegawai);
         model.addAttribute("noCabang", pegawai.getCabang().getNoCabang());
         model.addAttribute("namaPegawai", pegawai.getNamaPegawai());
         return "add-pegawai";
+        //}
     }
 
     @GetMapping("/pegawai/update/{noCabang}/{noPegawai}")
