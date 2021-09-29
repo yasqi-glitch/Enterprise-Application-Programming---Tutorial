@@ -3,6 +3,41 @@
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
 
+### Tutorial 3
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+Jawab =
+@AllArgsConstructor untuk mengenerates setiap constructor di Class dengan satu parameter
+@NoArgsConstructor untuk mengenerates constructor tanpa parameter
+@Setter bawaan dari lombok untuk mengenerates Setter dari Class secara otomatis
+@Getter bawaan dari lombok untuk mengenerates Getter dari Class secara otomatis
+@Entity mendefinisikan kelas agar dapat dipetakan ke tabel
+@Table mendefinisikan nama Tabelnya
+
+2. Pada class CabangDB, terdapat method findByNoCabang, apakah kegunaan dari method
+tersebut?
+Jawab = Untuk mencari data dari data berdasarkan nomor cabangnya.
+
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+Jawab = @JoinTable menyimpan id kedua entitas ke tabel yang terpisah sedangkan @JoinColumn menyimpan id entitas lain di kolom baru di tabel yang sama.
+@JoinColumn dapat digunakan ketika suatu entitas memiliki hubungan langsung.
+@JoinTable dapat digunakan untuk mengelola hubungan antar entitas pada tabel lain.
+
+4. Pada class PegawaiModel, digunakan anotasi @JoinColumn pada atribut cabang, apa
+kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa
+perbedaan nullable dan penggunaan anotasi @NotNull
+Jawab = name merupakan nama kolom, sedangkan refferencedColumnName merupakan nama kolom yang ingin di-reference, sedangkan nullable menentukan nilai null dapat dimasukkan ke dalam column atau tidak
+
+nullable dapat mendetksi method yang hasil returnnya null
+@NotNull mendeklarasikan suatu method tidak boleh mereturn null
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+Jawab = 
+FetchType.LAZY memberi informasi Hibernate untuk hanya mengambil entitas terkait dari database saat menggunakan relasi.
+CascadeType.ALL dapat digunakan untuk menyebarkan semua operasi termasuk kasus Hibernate
+FetchType.EAGER memberi tahu Hibernate untuk mendapatkan semua elemen dari relationship saat memilih root entity.
+
+
 ### Tutorial 2
 Pertanyaan 1: Cobalah untuk menambahkan sebuah Kebun dengan mengakses link
 berikut setelah menjalankan program:
