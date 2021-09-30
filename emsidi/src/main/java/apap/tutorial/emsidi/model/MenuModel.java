@@ -30,7 +30,18 @@ public class MenuModel implements Serializable {
     @Column(name="is_available", nullable = false)
     private Boolean isAvailable;
 
+    @NotNull
+    @Size(max = 50)
+    @Column(nullable = false)
+    private String deskripsiMenu;
+
     //Relasi dengan CabangModel
     @ManyToMany(mappedBy = "listMenu")
     List<CabangModel> listCabang;
+
+//    private CabangModel cabang;
+//
+//    public void setCabang(CabangModel cabang){
+//        this.cabang = cabang;
+//    }
 }

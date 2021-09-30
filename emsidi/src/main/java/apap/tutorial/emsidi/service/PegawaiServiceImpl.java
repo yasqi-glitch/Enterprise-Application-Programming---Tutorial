@@ -32,4 +32,9 @@ public class PegawaiServiceImpl implements PegawaiService {
     public void deletePegawaiByID(Long noPegawai){
         pegawaiDb.deleteById(noPegawai);
     }
+
+    @Override
+    public void removePegawai(PegawaiModel pegawai) {
+        pegawaiDb.delete(pegawai);
+    }
 }

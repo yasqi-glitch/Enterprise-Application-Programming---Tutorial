@@ -20,8 +20,23 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-<h2 th:text="'Update dilarang, toko masih buka.'"></h2>
-<a href="/">Kembali</a>
+<nav th:replace="fragments/fragment :: navbar('')"></nav>
+<div class="container">
+    <div class="card m-4 p-4">
+        <div class="card-body">
+            <div class="justify-content-center">
+                <br>
+                <h2
+                        th:text="'Pegawai telah berhasil dihapus'">
+                </h2>
+                <a class="btn btn-primary" th:href="@{/cabang/view(noCabang=${noCabang})}">Kembali</a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
 </body>
+
 </html>

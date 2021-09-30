@@ -2,6 +2,18 @@
 ## Authors
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
+### Tutorial 4
+1. Jelaskan perbedaan th:include dan th:replace!
+Jawaban : Jika `th:include` digunakan maka elemen frgament akan didalam tag pemanggil `th:include`. Sedangkan  `th:replace`, fragment yang dipanggil tidak berada di dalam tag yang memanggil tetapi akan digantikan dengan fragmentnya.
+
+2. Jelaskan apa fungsi dari th:object!
+ `th:object` dapat digunakan untuk menentukan objek yang akan diambil dari form untuk digunakan oleh atribut dari objek tsb didalam penggunaan form html.
+
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+ `$` untuk mendapatkan sebuah objek model yang dipassing dari controller yg dihubungkan ke form.
+  `*` untuk menunjuk atribut object yang digunakan di dalam form.
+  Di dalam soal, sebuah form html akan dihubungkan dengan model menggunakan $. seperti `${lcabang}` dan * dipakai saat mau mengambil attribut dari objek seprti `*{waktuTutup}`.
+
 
 ### Tutorial 3
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
