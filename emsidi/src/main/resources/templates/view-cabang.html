@@ -21,6 +21,7 @@
 
 <body>
 <nav th:replace="fragments/fragment :: navbar('Cabang')"></nav>
+
 <div class="container">
   <div class="card m-4 p-4">
     <div class="card-body">
@@ -120,7 +121,7 @@
   </div>
   <a class="btn btn-primary" href="/cabang/viewall">Kembali</a>
 </div>
-
+<div th:replace="fragments/fragment :: footer('Home')"></div>
 </body>
 
 </html>

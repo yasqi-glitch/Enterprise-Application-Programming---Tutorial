@@ -49,5 +49,10 @@
         </form>
     </div>
 </nav>
+
+<footer th:fragment="footer(page)">
+    <b th:text="${#execInfo.now.time}"></b>
+</footer>
+
 </body>
 </html>
