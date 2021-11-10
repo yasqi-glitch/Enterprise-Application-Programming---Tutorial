@@ -8,4 +8,5 @@ public interface PegawaiService {
     void deletePegawaiByID(Long noPegawai);
     PegawaiModel updatePegawai(PegawaiModel pegawai);
     PegawaiModel getPegawaiByPegawaiId(Long noPegawai);
+    void removePegawai(PegawaiModel pegawai);
 }

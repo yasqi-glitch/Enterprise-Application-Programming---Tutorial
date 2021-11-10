@@ -1,23 +1,90 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://thymeleaf.org">-->
+
+<!--<head>-->
+<!--    <title>Emsidi</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="card m-4 p-4">-->
+<!--        <div class="card-body">-->
+<!--            <div class="justify-content-center">-->
+<!--                <h2>Selamat Datang di Emsidi!</h2>-->
+<!--                <br>-->
+<!--                <a class="btn btn-primary" href="/cabang/add">Tambah Cabang</a>-->
+<!--                <a class="btn btn-primary" href="/cabang/viewall">Lihat Semua Cabang</a>-->
+<!--                <a class="btn btn-primary" href="/cabang/lihat">Lihat Semua Cabang Terurut</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
     <title>Emsidi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title> Home </title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFIBw8HfCJo="
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js
+"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 
 <body>
-<div class="container">
-    <div class="card m-4 p-4">
-        <div class="card-body">
-            <div class="justify-content-center">
-                <h2>Selamat Datang di Emsidi!</h2>
-                <br>
-                <a class="btn btn-primary" href="/cabang/add">Tambah Cabang</a>
-                <a class="btn btn-primary" href="/cabang/viewall">Lihat Semua Cabang</a>
-                <a class="btn btn-primary" href="/cabang/lihat">Lihat Semua Cabang Terurut</a>
-            </div>
+<nav th:replace="fragments/fragment :: navbar('Home')"></nav>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-danger">-->
+<!--    <a class="navbar-brand font-weight-bold text-light" href="/"> Emisidi </a>-->
+<!--    <button-->
+<!--            class ="navbar-toggler"-->
+<!--            type="button"-->
+<!--            data-toggle="collapse"-->
+<!--            data-target="#navbarNavAltMarkup"-->
+<!--            aria-controls="navbarNavAltMarkup"-->
+<!--            aria-expanded="false"-->
+<!--            aria-label="Toggle navigation"-->
+<!--    >-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse">-->
+<!--        <ul class="navbar-nav mr-auto">-->
+<!--            <li class="nav-item">-->
+<!--                <a th:href="@{/menu/add}" class="mx-2 btn btn-outline-dark">Tambah menu</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--        <form class="form-inline my-2 my-lg-0" th:action="@{/cabang/view}" method="GET">-->
+<!--            <input class="form-control mr-sm-2" type="search"-->
+<!--                   name="noCabang" placeholder="No Cabang" aria-label="Search">-->
+<!--            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>-->
+
+<!--        </form>-->
+<!--    </div>-->
+<!--</nav>-->
+<div class="d-flex justify-content-center">
+    <div class="m-4">
+        <h2>Selamat Datang di Emsidi</h2>
+        <div class="d-flex justify-content-center">
+            <a th:href="@{/cabang/viewall}" class="mx-2 btn btn-dark"> Lihat semua cabang</a>
+            <a th:href="@{/cabang/add}" class="mx-2 btn btn-outline-dark">Tambah cabang</a>
+        </div>
+        <div class="my-3 d-flex justify-content-center">
+            <a th:href="@{/menu/viewall}" class="mx-2 btn btn-dark">Lihat semua menu</a>
+            <a th:href="@{/menu/add}" class="mx-2 btn btn-dark">Tambah menu</a>
+
         </div>
     </div>
 </div>

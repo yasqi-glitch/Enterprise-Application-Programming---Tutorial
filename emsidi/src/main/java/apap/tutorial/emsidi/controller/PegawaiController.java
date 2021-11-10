@@ -49,13 +49,12 @@ public class PegawaiController {
     public String updatePegawaiForm(@PathVariable Long noPegawai,@PathVariable Long noCabang, Model model){
         try {
             CabangModel cabang = cabangService.getCabangByNoCabang(noCabang);
-            LocalTime waktuBuka = cabang.getWaktuBuka();
-            LocalTime waktuTutup = cabang.getWaktuTutup();
-            LocalTime waktuNow = LocalTime.now();
+//            LocalTime waktuBuka = cabang.getWaktuBuka();
+//            LocalTime waktuTutup = cabang.getWaktuTutup();
+            LocalTime now = LocalTime.now();
             PegawaiModel pegawai = pegawaiService.getPegawaiByPegawaiId(noPegawai);
             if(
-                    !(waktuNow.compareTo(waktuBuka) >0 && waktuTutup.compareTo(waktuBuka) <0 && waktuNow.compareTo(waktuTutup)>0)
-            ) {
+                    now.isBefore(cabang.getWaktuBuka()) || now.isAfter(cabang.getWaktuTutup())) {
                 model.addAttribute("noCabang", cabang);
                 model.addAttribute("pegawai", pegawai);
                 return "form-update-pegawai";
@@ -79,16 +78,32 @@ public class PegawaiController {
     @GetMapping("/pegawai/delete/{noCabang}/{noPegawai}")
     public String deletePegawai(@PathVariable Long noPegawai, @PathVariable Long noCabang, Model model){
         CabangModel cabang = cabangService.getCabangByNoCabang(noCabang);
-        LocalTime waktuBuka = cabang.getWaktuBuka();
-        LocalTime waktuTutup = cabang.getWaktuTutup();
-        LocalTime waktuNow = LocalTime.now();
-        if( !(waktuNow.compareTo(waktuBuka) >0 && waktuTutup.compareTo(waktuBuka) <0 && waktuNow.compareTo(waktuTutup)>0)){
+//        LocalTime waktuBuka = cabang.getWaktuBuka();
+//        LocalTime waktuTutup = cabang.getWaktuTutup();
+        LocalTime now = LocalTime.now();
+        if( now.isBefore(cabang.getWaktuBuka()) || now.isAfter(cabang.getWaktuTutup())){
             PegawaiModel pegawai = pegawaiService.getPegawaiByPegawaiId(noPegawai);
             model.addAttribute("pegawai", pegawai.getNoPegawai());
             pegawaiService.deletePegawaiByID(noPegawai);
             return "pegawai-delete";
         }
         return "error-page";
+    }
+
+    @PostMapping("/pegawai/delete")
+    public String deletePegawaiSubmit(
+            @ModelAttribute CabangModel cabang,
+            Model model
+    ){
+        LocalTime now = LocalTime.now();
+        if(now.isBefore(cabang.getWaktuBuka()) || now.isAfter(cabang.getWaktuTutup())){
+            for(PegawaiModel pegawai: cabang.getListPegawai()){
+                pegawaiService.removePegawai(pegawai);
+            }
+            model.addAttribute("noCabang", cabang.getNoCabang());
+            return "delete-pegawai";
+        }
+        return "error-cannot-delete";
     }
 
 

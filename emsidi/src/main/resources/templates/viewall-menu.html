@@ -4,7 +4,7 @@
 <head>
   <title>Emsidi</title>
   <meta charset="UTF-8">
-  <title> Cabang </title>
+  <title> Menu </title>
   <object th:include="fragments/fragment :: css" th:remove="tag"></object>
   <object th:include="fragments/fragment :: js" th:remove="tag"></object>
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
@@ -20,17 +20,34 @@
 </head>
 
 <body>
-<nav th:replace="fragments/fragment :: navbar('Cabang')"></nav>
+<nav th:replace="fragments/fragment :: navbar('Menu')"></nav>
 <div class="container">
-  <div class="card m-4 p-4">
-    <div class="card-body">
-      <div class="justify-content-center">
-        <h2 th:text="'Cabang dengan nomor ' + ${noCabang} + ' berhasil ditambahkan'"></h2>
-        <a class="btn btn-primary" href="/">Kembali ke Home</a>
-      </div>
-    </div>
-  </div>
+  <h2>Daftar Seluruh Menu Emsidi</h2>
+  <table class="table">
+    <thead>
+    <tr>
+
+      <th>No Menu</th>
+      <th>Nama</th>
+      <th>Deskripsi</th>
+      <th>Ketersediaan</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="menu, iterationStatus : ${listMenu}">
+      <td th:text="${menu.noMenu}"></td>
+      <td th:text="${menu.namaMenu}"></td>
+      <td th:text="${menu.deskripsiMenu}"></td>
+      <td th:if="${menu.isAvailable} == false">Tersedia</td>
+      <td th:if="${menu.isAvailable} == true">Kosong</td>
+
+    </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="/">Home</a>
 </div>
 
 </body>
+
 </html>
