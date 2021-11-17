@@ -8,5 +8,6 @@ public interface CabangService {
     void updateCabang(CabangModel cabang);
     void deleteCabang(Long noCabang);
     List<CabangModel> getCabangList();
+    List<CabangModel> getCabangListSorted();
     CabangModel getCabangByNoCabang(Long noCabang);
 }

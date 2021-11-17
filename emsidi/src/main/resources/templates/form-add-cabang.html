@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <title>Emsidi</title>
@@ -21,7 +22,7 @@
 
 <body>
 <nav th:replace="fragments/fragment :: navbar('Home')"></nav>
-<div class="container">
+<div class="container" sec:authorize="hasAuthority('Manajer')">
   <div class="card m-4 p-4">
     <div class="card-body">
       <div class="justify-content-center">
@@ -57,22 +58,28 @@
             <tr>
 <!--              <th class="font-weight-normal">Nama Menu </th>-->
 
-              <input required class="form-control" type="text" name="namaMenu" />
+<!--              <input required class="form-control" type="text" name="namaMenu" />-->
 
             </tr>
             </thead>
             <tbody>
             <tr th:each="menu, iterationStatus : *{listMenu}">
               <td>
-                <div class="form-group">
-                    <input
-                    type="text"
-                    name="namaMenu"
-                    class="form-control"
-                    th:field="*{listMenu[__${iterationStatus.index}__].namaMenu}"
+<!--                <div class="form-group">-->
+<!--                    <input-->
+<!--                    type="text"-->
+<!--                    name="namaMenu"-->
+<!--                    class="form-control"-->
+<!--                    th:field="*{listMenu[__${iterationStatus.index}__].namaMenu}"-->
 
-                    />
-                </div>
+<!--                    />-->
+<!--                </div>-->
+                  <select name="noMenu" th:field="*{listMenu[__${iterationStatus.index}__].noMenu}"
+                          class="form-control">
+                      <div th:each="menuEx, iterationStatus2 : ${listMenuExisting}">
+                          <option th:value="${menuEx.noMenu}" th:text="${menuEx.namaMenu}"></option>
+                      </div>
+                  </select>
                     <!-- dropdown gabisa di klik knp ya-->
 <!--                  <select th:field="*{listMenu[__${iterationStatus.index}__].noMenu}"-->
 <!--                          class="form-control">-->
@@ -83,7 +90,11 @@
 <!--                  </select>-->
 
               <td>
-              <button type="submit" name="remove" th:value="${iterationStatus.index}" class="btn btn-danger">Hapus baris</button>
+                <td>
+                    <button th:value="${iterationStatus.index}" class="btn btn-danger" type="submit"
+                            name="deleteRow">Hapus</button>
+                </td>
+<!--              <button type="submit" name="remove" th:value="${iterationStatus.index}" class="btn btn-danger">Hapus baris</button>-->
             </td>
 
               </td>

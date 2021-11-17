@@ -29,15 +29,26 @@ public class CabangController {
 
     @GetMapping("/cabang/add")
     public String addCabangForm(Model model){
-        model.addAttribute("cabang", new CabangModel());
+        CabangModel cabang = new CabangModel();
+        List<MenuModel> listMenu = menuService.getListMenu();
+        List<MenuModel> listMenuNew = new ArrayList<MenuModel>();
+
+        cabang.setListMenu(listMenuNew);
+        cabang.getListMenu().add(new MenuModel());
+
+        model.addAttribute("cabang", cabang);
+        model.addAttribute("listMenuExisting", listMenu);
         return  "form-add-cabang";
     }
 
-    @PostMapping("/cabang/add")
+    @PostMapping(value = "/cabang/add", params = {"save"})
     public String addCabangSubmit(
             @ModelAttribute CabangModel cabang,
             Model model
     ){
+        if(cabang.getListMenu() == null){
+            cabang.setListMenu(new ArrayList<>());
+        }
         cabangService.addCabang(cabang);
         model.addAttribute("noCabang", cabang.getNoCabang());
         return "add-cabang";
@@ -117,42 +128,46 @@ public class CabangController {
 
     //Latihan no 3
 
-    @PostMapping(value = "/cabang/add", params = {"add"})
+    @PostMapping(value = "/cabang/add", params = {"addRow"})
     public String addRowMenu(@ModelAttribute CabangModel cabang, Model model){
-        if(cabang.getListMenu() == null || cabang.getListMenu().size()==0){
-            cabang.setListMenu(new ArrayList<MenuModel>());
+        if(cabang.getListMenu() == null || cabang.getListMenu().size() == 0){
+            cabang.setListMenu(new ArrayList<>());
         }
-        List<MenuModel> listMenu2 = menuService.getListMenu();
-            cabang.getListMenu().add(new MenuModel());
-            model.addAttribute("cabang", cabang);
-            model.addAttribute("menu", listMenu2);
+        cabang.getListMenu().add(new MenuModel());
+        List<MenuModel> listMenu = menuService.getListMenu();
+
+        model.addAttribute("cabang", cabang);
+        model.addAttribute("listMenuExisting", listMenu);
             return "form-add-cabang";
     }
 
-    @PostMapping(value = "/cabang/add", params = {"remove"})
-    public String removeRowMenu(@ModelAttribute CabangModel cabang,
-                                Model model,
-                                @RequestParam("remove") int Idxhapus)
+    @PostMapping(value = "/cabang/add", params = {"deleteRow"})
+    public String removeRowMenu(  @ModelAttribute CabangModel cabang,
+                                  @RequestParam("deleteRow") Integer row,
+                                  Model model)
     {
+        final Integer rowId = Integer.valueOf(row);
+        cabang.getListMenu().remove(rowId.intValue());
+
         List<MenuModel> listMenu = menuService.getListMenu();
-        cabang.getListMenu().remove(Idxhapus);
+
         model.addAttribute("cabang", cabang);
-        model.addAttribute("listMenu", listMenu);
+        model.addAttribute("listMenuExisting", listMenu);
         return  "form-add-cabang";
     }
 
-    @PostMapping(value = "/cabang/add", params = {"sub"})
-    private String menuSubmitForm(@ModelAttribute CabangModel cabang, Model model){
-        //int jumlahMenu = cabang.getListMenu().size();
-        model.addAttribute("namaMenu", cabang.getNamaCabang());
-        cabangService.addCabang(cabang);
-        model.addAttribute("noCabang", cabang.getNoCabang());
+//    @PostMapping(value = "/cabang/add", params = {"sub"})
+//    private String menuSubmitForm(@ModelAttribute CabangModel cabang, Model model){
+//        //int jumlahMenu = cabang.getListMenu().size();
+//        model.addAttribute("namaMenu", cabang.getNamaCabang());
+//        cabangService.addCabang(cabang);
+//        model.addAttribute("noCabang", cabang.getNoCabang());
+//
+//
+//        //apaya
+//        return "add-cabang";
 
-
-        //apaya
-        return "add-cabang";
-
-    }
+    //}
 
 
 
