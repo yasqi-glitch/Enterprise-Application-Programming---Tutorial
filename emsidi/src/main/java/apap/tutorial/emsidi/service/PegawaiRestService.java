@@ -15,5 +15,7 @@ public interface PegawaiRestService {
     List<PegawaiModel> retrieveListPegawai();
     PegawaiModel getPegawaiByNoPegawai(Long noPegawai);
    PegawaiModel prediksiUmurPegawai(Long noPegawai, PegawaiModel updatePegawai);
+    List<PegawaiModel> pegawaiGender(int gender);
+
 
 }

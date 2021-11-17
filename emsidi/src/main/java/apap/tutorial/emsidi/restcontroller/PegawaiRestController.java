@@ -101,6 +101,8 @@ public class PegawaiRestController {
     @GetMapping(value = "/pegawai/umur/{noPegawai}")
     private PegawaiModel umurPegawaii(@PathVariable("noPegawai") Long noPegawai) {
         PegawaiModel pegawai = pegawaiRestService.getPegawaiByNoPegawai(noPegawai);
+        //System.out.println("MASUK");
+        //System.out.println(pegawai);
         try {
             return pegawaiRestService.prediksiUmurPegawai(noPegawai, pegawai );
 
@@ -112,6 +114,17 @@ public class PegawaiRestController {
         }
     }
 
+
+    @GetMapping(value="/list-pegawai/{gender}")
+    private List<PegawaiModel> getPegawaiGender(@PathVariable("gender") int gender){
+        try{
+            return pegawaiRestService.pegawaiGender(gender);
+        } catch(NoSuchElementException e){
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Pegawai Not Found."
+            );
+        }
+    }
 
 
 

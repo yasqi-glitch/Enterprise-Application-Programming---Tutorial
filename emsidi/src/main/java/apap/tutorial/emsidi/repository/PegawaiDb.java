@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface PegawaiDb extends JpaRepository<PegawaiModel, Long> {
     //@Override
     Optional<PegawaiModel> findByNoPegawai(Long noPegawai);
+    PegawaiModel getById(Long noPegawai);
 }

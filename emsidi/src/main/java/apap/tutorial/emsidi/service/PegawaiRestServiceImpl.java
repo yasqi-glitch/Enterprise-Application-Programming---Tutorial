@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.transaction.Transactional;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -57,7 +58,15 @@ public class PegawaiRestServiceImpl implements PegawaiRestService {
 
     @Override
     public PegawaiModel getPegawaiByNoPegawai(Long noPegawai) {
-        return pegawaiDb.getById(noPegawai);
+        Optional<PegawaiModel> pegawai = pegawaiDb.findByNoPegawai(noPegawai);
+        if(pegawai.isPresent()){
+            return pegawai.get();
+
+        }
+        else {
+            throw new NoSuchElementException();
+        }
+        //return pegawaiDb.getById(noPegawai).get;
     }
 
     public PegawaiRestServiceImpl(WebClient.Builder webClientBuilder){
@@ -67,28 +76,48 @@ public class PegawaiRestServiceImpl implements PegawaiRestService {
     @Override
     public PegawaiModel prediksiUmurPegawai(Long noPegawai, PegawaiModel pegawaiUpdate) {
         LocalTime now = LocalTime.now();
-
+        //System.out.println(noPegawai);
         PegawaiModel pegawai = getPegawaiByNoPegawai(noPegawai);
         String namaPegawai = pegawai.getNamaPegawai();
+       // System.out.println(namaPegawai);
+
+
         String namaPegawaiSplit = namaPegawai.split(" ")[0];
         CabangModel cabang = pegawai.getCabang();
 
         //Integer age = this.webClient.get().uri("?name=" + namaPegawaiSplit).retrieve()
                // .bodyToMono(PrediksiUmur.class).block().getAge();
 
-        if(now.isAfter(cabang.getWaktuTutup()) || now.isBefore(cabang.getWaktuBuka()) ){
-//            pegawai.setUmur(age);
-//            pegawaiDb.save(pegawai);
+        if( now.isBefore(cabang.getWaktuBuka()) || now.isAfter(cabang.getWaktuTutup())  ){
+
+            System.out.println("TEST");
             final String uri = "https://api.agify.io/?name=" + String.valueOf(pegawai.getNamaPegawai().split(" ")[0]);
             RestTemplate restTemplate = new RestTemplate();
             String result = restTemplate.getForObject(uri, String.class);
 
             Integer age= Integer.parseInt(result.split(",")[1].substring(6, result.split(",")[1].length()));
             pegawai.setUmur(age);
+            //System.out.println(age);
              pegawaiDb.save(pegawai);
         } else {
-            throw new UnsupportedOperationException("Tidak bisa");
+          throw new UnsupportedOperationException("Tidak bisa");
         }
+        //System.out.println( pegawaiDb.findByNoPegawai(noPegawai).get());
         return pegawaiDb.findByNoPegawai(noPegawai).get();
+
+    }
+
+    @Override
+    public List<PegawaiModel> pegawaiGender(int gender) {
+        List<PegawaiModel> staffs = pegawaiDb.findAll();
+        List<PegawaiModel> listGender = new ArrayList<>();
+
+        for(PegawaiModel staff : staffs){
+            if(staff.getJenisKelamin() == gender){
+                listGender.add(staff);
+            }
+        }
+        return  listGender;
+
     }
 }
