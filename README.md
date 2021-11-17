@@ -2,6 +2,25 @@
 ## Authors
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
+### Tutorial 5
+1. Apa itu Postman? Apa kegunaannya?
+
+Postman merupakan aplikasi yang berguna untuk berinteraksi dengan API melalui HTTP request.
+kegunaan : memastikan fungsionalitas suatu API dengan mudah. Selain itu, dapat juga digunakan untuk automated testing, memonitor pekerjaan, serta simulasi endpoint API
+
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+@JsonIgnoreProperties : mengabaikan atribut dalam serialisasi dan deserialisasi JSON
+
+@JsonProperty :  memetakan nama properti yang diberikan pada JSON terhadap properti di class Java terkait. sebagai contoh, suatu atribut age memiliki @JsonProperty berupa `classAge`, maka saat pengriman JSON dengan parameter `classAge`, parameternya akan menjadi atribut age pada class yang terkait.
+
+3. Apa kegunaan atribut WebClient?
+
+dapat berguna untuk membuat API consumer -> API lain dapat berkomunikasi dengan API yang ada pada project kita.
+
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+ResponseEntity : Sebagai representasi HTTP response dengan isi status,code, header, body. Kegunaannya, kita dapat mengatur response yang kita inginkan
+BindingResult : Merupakan objek dr spring yang menyimpan hasil dan error saat melakukan suatu validasi. Dapat digunakan untuk memastikan kesesuaian isi form yang telah disubmit
+
 ### Tutorial 4
 1. Jelaskan perbedaan th:include dan th:replace!
 Jawaban : Jika `th:include` digunakan maka elemen frgament akan didalam tag pemanggil `th:include`. Sedangkan  `th:replace`, fragment yang dipanggil tidak berada di dalam tag yang memanggil tetapi akan digantikan dengan fragmentnya.
