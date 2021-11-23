@@ -13,4 +13,5 @@ public interface UserService {
 
     UserModel  resetPassword(UserModel user, String passwordold, String passwordnew, String confirm);
     UserModel getUserById(String id);
+    public boolean CekEmail(String email);
 }

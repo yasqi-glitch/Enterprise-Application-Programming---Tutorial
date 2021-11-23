@@ -69,4 +69,16 @@ public class UserServiceImpl implements UserService{
         }
         return null;
     }
+
+    @Override
+    public boolean CekEmail(String email) {
+        List<UserModel> a = userDb.findAll();
+        for(UserModel mail: a){
+            if(mail.getEmail().equals(email)){
+                return false;
+            }
+        }
+
+        return true;
+    }
 }

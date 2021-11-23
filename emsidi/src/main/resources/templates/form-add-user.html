@@ -52,6 +52,10 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a class="btn btn-link" href="/"> Home</a>
                 </form>
+                <div th:switch="${pesan}">
+                    <div th:case="invalid"> <p> Email sudah ada</p></div>
+                </div>
+
             </div>
         </div>
     </div>

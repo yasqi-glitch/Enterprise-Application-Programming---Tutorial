@@ -36,9 +36,20 @@ public class UserController {
 
     @PostMapping(value="/add")
     private String addUserSubmit(@ModelAttribute UserModel user, Model model){
-        userService.addUser(user);
-        model.addAttribute("user", user);
-        return "redirect:/";
+        String mail = user.getEmail();
+        if(userService.CekEmail(mail)){
+            userService.addUser(user);
+            model.addAttribute("user", user);
+            return "redirect:/";
+        }
+        else{
+            String pesan = "invalid";
+            model.addAttribute("pesan", pesan);
+            return "form-add-user";
+        }
+
+        //model.addAttribute("pesan", pesan);
+
     }
 
     @GetMapping(value="/lihat-all")
