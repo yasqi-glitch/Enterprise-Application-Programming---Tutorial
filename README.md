@@ -2,6 +2,30 @@
 ## Authors
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
+### Tutorial 6
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+Jawab: Perbedaan Otentikasi dan Otorisasi adalah otentikasi merupakan proses identifikasi pengguna sedangkan, otorisasi menentukan apakah pengguna tersebut boleh melakukan task tertentu.
+Contoh otentikasi terdapat pada UserDetailsServiceImpl.java dan PageController.java
+Contoh otorisasi terdapat pada class WebSecurityConfig.java dan beberapa tampilan di dalam html yang harus memenuhi syarat suatu role agar dapat melihatnya.
+
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+Jawab : BCryptPasswordEncoder merupakan class bawaan springboot untuk meng-encode password menjadi kode unik agar keamanan password tersebut meningkat. Cara kerja nya adalah kode abstrak disimpan
+dalam database saat user melakukan login. Kemudian akan dipanggil suatu fungsi yang dapat membalikkan kode abstrak menjadi password asli ketika sign up dan dibandingkan apakah sama atau tidak dengan input saat user login .
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa
+demikian?
+Jawab : Untuk tingkat keamanan yang lebih tinggi, sebaiknya digunakan hashing dalam menyimpan password. Hal ini disebabkan Hashing adalah fungsi satu arah, artinya setelah Anda meng-hash kata sandi, sangat sulit untuk mendapatkan kembali kata sandi asli dari hash. Enkripsi adalah fungsi dua arah, di mana jauh lebih mudah untuk mendapatkan kembali teks asli dari teks terenkripsi.
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+Jawab :UUID kepanjangannya adalah immutable universally unique identifier. 
+UUID berguna untuk mencetak karakter abstrak dari 32 karakter String yang diacak secara random. Dalam UUID tidak terdapat pola khusus.
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut padahal kita sudah memiliki class UserRoleServiceImpl.java?
+Jawab :  UserDetailsServiceImpl.java berguna untuk mencocokan password dan username dengan yang ada di database. UserRoleServiceImpl.java berguna sebagai hal apa saja yang dapat dilakukan oleh role tersebut.
+
+
 ### Tutorial 5
 1. Apa itu Postman? Apa kegunaannya?
 
