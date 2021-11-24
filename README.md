@@ -2,6 +2,29 @@
 ## Authors
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
+### Tutorial 7
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
+sebagai ilustrasi dari apa yang Anda jelaskan.
+Jawab : 
+gambar : https://docs.google.com/document/d/1NT2yNYGYKj_hiwEKJPrMVvxbSzjNTbSCVYsT4OzQeLs/edit?usp=sharing
+Pada latihan pertama saya membuat fungsi handleDeleteItemToCart. Di fungsi itu mirip dengan yang addtocart namun perbedaanya akan dicek targentInd >= 0 dan newItem.inCart = false. kemudian diremove menggunakan newItems.splice(newItem);
+pada latihan nomor dua saya membuat fungsi updateBalance yang mereturn angka, jika fungsi tersebut mereturn angka 1 maka bbrti balance masih cukup dan fungsi tsb dipanggil didalam method addtoCart. jika balance masih lebih besar dari price maka fungsi akan mengurangi balance dengan price dan setBalance. kemudian saya mensetbalance kembali pada fungsi delete agar nilai balance menjadi sperti semula.
+Pada latihan nomor 3 menurut saya yang paling mudah karna saya hanya perlu menambahkan Alert("") pada index.js di homefunc dan home dan tidak perlu penyeseuain lagi seperti fungsi-fungsi yang sebelumnya.
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+Jawab : Props merupakan singkatan dari property yang setara dengan argumen pada sebuah function dan state adalah data private yang dimiliki component yang terus berubah sesuai dengan perilaku program.
+Props digunakan untuk komunikasi data antar komponen dari parent ke child. Sedangkan, state dapat digunakan untuk untuk kelas komponen yang memiliki state saja.
+
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+Jawab : react bersifat reusable. Penggunaan komponen dapat membuat aplikasi menjadi lebih konsisten karna komponen dapat digunakan dimana saja.
+
+4. Apa perbedaan class component dan functional component?
+Jawab : Komponen Fungsional: Komponen fungsional adalah beberapa komponen umum yang akan ditemukan saat bekerja di React. Ini hanyalah fungsi JavaScript. Sedangkan, class component adalah adalah kelas sederhana (terdiri dari beberapa fungsi yang menambahkan fungsionalitas ke aplikasi).
+
+5. Dalam react, apakah perbedaan component dan element?
+Jawab : komponen mengacu pada bagian kecil dari entitas yang lebih besar yang sebagian besar adalah objek yang diproduksi. Sebaliknya, elemen adalah salah satu bagian paling sederhana yang terdiri dari apa pun.
+
+
 ### Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
 yang telah anda buat) konsep tersebut diimplementasi?
