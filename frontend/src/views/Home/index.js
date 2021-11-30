@@ -76,7 +76,17 @@ export default class Home extends React.Component {
       this.setState({ shopItems: tempShopItems });
     };
 
+    deleteSemua = () => {
+      for (var i =0; i< this.state.cartItems.length; i++){
+        const things = this.state.cartItems[i];
+        var price = things.price;
+        this.updateShopItem(things, false);
+        this.setState({balance: this.state.balance +things.price});
+      }
+      this.setState({cartItems: []});
+
     
+    }
    
     render() {
       return (
@@ -106,6 +116,10 @@ export default class Home extends React.Component {
             <div className="row mt-3">
               {!this.state.cartHidden ? (
                 <div className="col-sm">
+                  <div className="text-center">
+                  <button onClick={this.deleteSemua}>Delete all</button>
+                 
+                  </div>
                   <List
                     title="My Cart"
                     items={this.state.cartItems}
