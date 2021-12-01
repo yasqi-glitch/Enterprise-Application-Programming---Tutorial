@@ -76,12 +76,12 @@ export default class Home extends React.Component {
       this.setState({ shopItems: tempShopItems });
     };
 
-    deleteSemua = () => {
+    deleteSemua = (item) => {
       for (var i =0; i< this.state.cartItems.length; i++){
         const things = this.state.cartItems[i];
         var price = things.price;
         this.updateShopItem(things, false);
-        this.setState({balance: this.state.balance +things.price});
+        this.setState({balance: this.state.balance + price});
       }
       this.setState({cartItems: []});
 
