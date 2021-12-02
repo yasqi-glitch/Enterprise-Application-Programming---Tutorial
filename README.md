@@ -2,6 +2,44 @@
 ## Authors
 * **Yasmin Qurrota Aini** - *1906399625* - *A*
 
+### Tutorial 8
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian
+melakukan langkah - langkah tersebut?
+answer : Langkah yang saya lakukan adalah saya menambahkan kode pada function handleSubmitItem yaitu ->
+this.setState({
+                title: "",
+                price: 0,
+                description: "",
+                category: "",
+                quantity: 0
+            })
+dengan menggunakan kode tersebut maka form yang akan di add akan menjadi kosong kembali setelah di-submit.
+
+2. Jelaskan fungsi dari async dan await!
+answer : 
+-Async : Async sendiri merupakan fungsi dari javascript untuk kegiatan asyncronus. Fungsi async mengembalikan objek dengan tipe Promise.
+-Await : Await berfungsi untuk memberitahu kepada aplikasi utk keluar sementara dari fungsi async dan akan kembali lagi ke fungsi async ketika tugas yang dijalankan selesai.
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.
+answer : Jawabannya disini ya kak
+https://docs.google.com/document/d/1Iot_qKM-2AAd8JBzakxkcRcuPIkFHd4tTlb7uQipWPE/edit?usp=sharing
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”.
+answer : 
+componentDidMount : Biasanya digunakan untuk mengambil data. Setelah HTML yang dirender selesai loading, fungsi ini dipanggil.  componentDidMount digunakan saat React mengambil data eksternal dari website lain. Use case : Mangambil data dari website lain untuk dirender.
+
+shouldComponentUpdate : shouldComponenUpdate() digunakan untuk memberi tahu React jika output komponen tidak terpengaruh oleh perubahan status atau props saat ini. Fungsi ini dipanggil setelah props atau state mengalami perubahan dan sebelum proses rendering dijalankan. Use case : Pengubahan komponen dan dilakukannya rendering setiap state berubah.
+
+componentDidUpdate : Fungsi ini digunakak saat terjadi interaksi pada environment non-React speerti browser. Fungsi ini dipanggil saat terjadi update pada instance di dalam komponen dan HTML yang dirender selesai melakukan loading. Use case : mengupdate komponen.
+
+componentWillReceiveProps : Dengan fungsi ini dapat diketahui apakah terjadi perubahan props tanpa render kembali. Fungsi ini dipanggil ketika terjadi perubahan pada props dan saat komponen akan menerima props. Use case : dilakukannya reset state.
+
+componentWillUnmount : Biasanya fungsi ini diapakai saat dilakukan pembersihan timer yang tidak valid, membatalkan request jaringan. Fungsi ini dipanggil ketika terdapat komponen yang terhapus dari DOM. Use case : Penghapusan interval waktu.
+
 ### Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
 sebagai ilustrasi dari apa yang Anda jelaskan.
